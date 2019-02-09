@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Assets/slimeWalk2.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Новая анимация"
+length = 0.1
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 2 ) ]
+}
+
+[node name="Enemy" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -24.6597, 14.0715, -25.9219, 8.07587, -25.2908, 1.13359, -21.6619, -4.86201, -17.8752, -9.59538, -11.8796, -12.5932, -6.51511, -14.3287, 0.427166, -14.3287, 5.94943, -12.2776, 11.6295, -8.01759, 14.9428, -3.59978, 16.6784, 0.186918, 17.6251, 4.92029, 17.9406, 6.3403, 21.5696, 9.18032, 25.0407, 11.547, 25.0407, 12.8092, 25.0407, 14.2292 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+"anims/Новая анимация" = SubResource( 1 )
+blend_times = [  ]
+
+
